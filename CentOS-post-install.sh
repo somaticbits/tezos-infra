@@ -5,12 +5,14 @@ yellow=$'\e[33m'
 blue=$'\e[34m'
 endColor=$'\e[0m'
 
+source /etc/profile.d/lang.sh
+
 echo
-echo -e "${yellow}******************************************************${endColor}"
-echo -e "${yellow}Welcome to SOMATICBITS's Centos 7 post install script!${endColor}"
-echo -e "${yellow}******************************************************${endColor}"
+echo -e "${yellow}**********************************************************${endColor}"
+echo -e "${yellow}* Welcome to SOMATICBITS's Centos 7 post install script! *${endColor}"
+echo -e "${yellow}**********************************************************${endColor}"
 echo
-echo -e "----------- Updating system..."
+echo -e "${yellow}----------- Updating system...${endColor}"
 echo
 
 yum update -yyy -q
@@ -18,7 +20,7 @@ yum update -yyy -q
 echo
 echo -e "${green}✓ System is updated.${endColor}"
 echo
-echo "----------- ${yellow}Adding Epel repo...${endColor}"
+echo "${yellow}----------- Adding Epel repo...${endColor}"
 echo
 
 yum install epel-release -y -q
@@ -30,7 +32,7 @@ echo
 yum update -q
 
 echo
-echo -e "----------- ${yellow}Installing Development tools and few other things...${endColor}"
+echo -e "${yellow}----------- Installing Development tools and few other things...${endColor}"
 echo
 
 yum install nano git -y -q
@@ -43,7 +45,7 @@ echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
-echo -e "----------- ${yellow}Adding Docker Community Edition repository and installing docker-ce with docker-compose...${endColor}"
+echo -e "${yellow}----------- Adding Docker Community Edition repository and installing docker-ce with docker-compose...${endColor}"
 platform=$(uname -s)
 curl -L 'https://github.com/docker/compose/releases/latest/download/docker-compose-${platform,}-$(uname -m)'  -o /usr/local/bin/docker-compose
 cp /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -59,7 +61,7 @@ echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
-echo "----------- ${yellow}Installing NTP syncing...${endColor}"
+echo "${yellow}----------- Installing NTP syncing...${endColor}"
 yum install ntp ntpdate -y -q
 systemctl start ntpd
 systemctl enable ntpd
