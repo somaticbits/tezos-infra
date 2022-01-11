@@ -49,7 +49,7 @@ else
   echo
 fi
 
-echo -e "${yellow}--- Running Docker Tezos container and importing snapshot (will take a while... be patient)${endColor}"
+echo -e "${yellow}--- Importing snapshot (will take a while... be patient)${endColor}"
 echo
 
 # Extract block id from snapshot URL for import
@@ -58,4 +58,7 @@ docker run --rm -v ${TEZOS_PATH}/node:/var/run/tezos/node -v ${TEZOS_PATH}/snaps
 
 echo
 echo -e "${green}✓ Done!${endColor}"
+echo
+
+echo -e "${yellow}--- Running Docker Tezos container${endColor}"
 echo
