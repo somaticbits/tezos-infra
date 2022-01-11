@@ -1,36 +1,34 @@
 #!/bin/bash
-bold=$'\e[1;0m'
-italic=$'\e[3:0m'
-red=$'\e[0;31m'
-boldRed=$'\e[1;31m'
-green=$'\e[0;32m'
-boldGreen=$'\e[1;32m'
-yellow=$'\e[0;33m'
-boldYellow=$'\e[1;33m'
-blue=$'\e[0;34m'
-boldBlue=$'\e[1;34m'
+red=$'\e[31m'
+green=$'\e[32m'
+yellow=$'\e[33m'
+blue=$'\e[34m'
 endColor=$'\e[0m'
 
-echo -e "${bold}Welcome to SOMATICBITS's Centos 7 post install script!${endColor}"
 echo
-echo -e "${italic}Updating system...${endColor}"
+echo -e "${blue}Welcome to SOMATICBITS's Centos 7 post install script!${endColor}"
 echo
+echo -e "----------- Updating system..."
+echo
+
 yum update -yyy
 
-echo -e "${boldGreen}System is updated.${endColor}"
 echo
-echo "${italic}Adding Epel repo...${endColor}"
+echo -e "${green}System is updated.${endColor}"
+echo
+echo "----------- Adding Epel repo..."
+echo
 
 yum install epel-release -y
 
 echo
-echo -e "${boldGreen}Done!${endColor}"
+echo -e "${green}Done!${endColor}"
 echo
 
 yum update
 
 echo
-echo -e "${bold}Installing Development tools and few other things...${endColor}"
+echo -e "----------- Installing Development tools and few other things..."
 echo
 
 yum install nano git -y
@@ -40,10 +38,10 @@ yum install python-pip -y
 pip install --upgrade pip
 
 echo
-echo -e "${boldGreen}Done!${endColor}"
+echo -e "${green}Done!${endColor}"
 echo
 
-echo -e "${italic}Adding Docker Community Edition repository and installing docker-ce with docker-compose...${endColor}"
+echo -e "----------- Adding Docker Community Edition repository and installing docker-ce with docker-compose..."
 platform=$(uname -s)
 curl -L 'https://github.com/docker/compose/releases/latest/download/docker-compose-${platform,}-$(uname -m)'  -o /usr/local/bin/docker-compose
 cp /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -56,10 +54,10 @@ systemctl start docker
 systemctl enable docker
 
 echo
-echo -e "${boldGreen}Done!${endColor}"
+echo -e "${green}Done!${endColor}"
 echo
 
-echo "${italic}Installing NTP syncing...${endColor}"
+echo "----------- Installing NTP syncing..."
 yum install ntp ntpdate
 systemctl start ntpd
 systemctl enable ntpd
@@ -68,7 +66,7 @@ systemctl restart ntpd
 hwclock -w
 
 echo
-echo -e "${boldGreen}Done!${endColor}"
+echo -e "${green}Done!${endColor}"
 echo
 
 mkdir .ssh
