@@ -101,28 +101,40 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-First and foremost step is to get either a VPS, or a dedicated server to host the Tezos Node, the TzKT blockchain indexer and the monitoring stack. Note: these steps are valid on a CentOS 7 distribution but can be reproduced with some changes on any other distro (Ubuntu, Debian...).
+First and foremost step is to get either a VPS, or a dedicated server to host the Tezos Node, the TzKT blockchain indexer and the monitoring stack. Current preferred provider is [Servdiscount](www.servdiscount.com).
+
+*Note: these steps are valid on a CentOS 7 distribution but can be reproduced with some changes on any other distro (Ubuntu, Debian...).*
 
 ### Prerequisites
 
+A general knowledge of *nix system is a prerequisite.
+
 This script will add a few necessary things to your CentOS installation (Development tools, Docker Community Edition and Docker Compose, NTP Syncing)
-* [post-install script for CentOS 7](https://raw.githubusercontent.com/somaticbits/tezos-infra/main/CentOS-post-install.sh?token=GHSAT0AAAAAABPOZLUVA64JW7N56BIF4TCUYO5NEKQ)
+* [post-install script for CentOS 7](https://raw.githubusercontent.com/somaticbits/tezos-infra/main/CentOS-post-install.sh?token=GHSAT0AAAAAABPOZLUUUOORYZ7ARTMNKT5OYO5PY6A)
+
+Downloading and running the script (run as root/sudo):  
+```sh
+cd ~
+curl -L https://raw.githubusercontent.com/somaticbits/tezos-infra/main/CentOS-post-install.sh?token=GHSAT0AAAAAABPOZLUUUOORYZ7ARTMNKT5OYO5PY6A -o post-install.sh
+chmod +x post-install.sh
+./post-install.sh
+```
+
+If this error occurs: `Failed to set locale, defaulting to C`, refer to this post: [unixstackexchange](https://unix.stackexchange.com/a/648866)
+
+Once everything installed, create a new account (here `tezos`), add a password and grant root permissions:
+```sh
+adduser tezos
+passwd tezos
+usermod -aG wheel tezos
+```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/somaticbits/tezos-infra.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+1. Pull the latest release candidate Tezos docker image
+`sudo docker pull tezos/tezos:v12.0-rc1`
+2.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
