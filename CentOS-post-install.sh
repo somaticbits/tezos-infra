@@ -1,11 +1,21 @@
 #!/bin/bash
-echo "Welcome to SOMATICBITS's Centos 7 post install script!"
+bold=$'\e[1;0m'
+red=$'\e[0;31m'
+boldRed=$'\e[1;31m'
+green=$'\e[0;32m'
+boldGreen=$'\e[1;32m'
+yellow=$'\e[0;33m'
+boldYellow=$'\e[1;33m'
+blue=$'\e[0;34m'
+boldBlue=$'\e[1;34m'
 
+echo "$bold Welcome to SOMATICBITS's Centos 7 post install script!"
+echo
 echo "Updating system..."
-
+echo
 yum update -yyy
 
-echo "System is updated."
+echo "$green System is updated."
 
 echo "Adding Epel repo..."
 
