@@ -18,21 +18,23 @@ echo
 docker pull tezos/tezos:${TEZOS_VERSION}
 
 echo
-echo -e "${yellow}--- Creating folders for permanent storage${endColor}"
+echo -e "${green}✓ Done!${endColor}"
 echo
+
+echo -e "${yellow}--- Creating folders for permanent storage${endColor}"
 
 # Creating folders for permanent storage of Docker volumes
 mkdir -p ${TEZOS_PATH}/node
 chmod 777 ${TEZOS_PATH}/node
 
+echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
 echo -e "${yellow}--- Pulling latest snapshot${endColor}"
 echo
 
-SNAPSHOT_URL=$(curl -sS https://snapshots-tezos.giganode.io | grep -o -E '"(https.*mainnet.*full)"' | tr -d '"' | head -
-1)
+SNAPSHOT_URL=$(curl -sS https://snapshots-tezos.giganode.io | grep -o -E '"(https.*mainnet.*full)"' | tr -d '"' | head -1)
 
 if [ ! -e ${TEZOS_PATH}/snapshots/mainnet.full ]; then
   mkdir -p ${TEZOS_PATH}/snapshots
