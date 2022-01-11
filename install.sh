@@ -13,7 +13,6 @@ echo -e "${yellow}* Welcome to SOMATICBITS's Tezos full node install script! *${
 echo -e "${yellow}************************************************************${endColor}"
 echo
 echo -e "${yellow}--- Pulling Tezos Docker image${endColor}"
-echo
 
 docker pull tezos/tezos:${TEZOS_VERSION}
 
@@ -21,6 +20,7 @@ echo
 echo -e "${yellow}--- Creating folders for permanent storage${endColor}"
 echo
 
+# Creating folders for permanent storage of Docker volumes
 mkdir -p ${TEZOS_PATH}/node
 chmod 777 ${TEZOS_PATH}/node
 mkdir -p ${TEZOS_PATH}/snapshots
