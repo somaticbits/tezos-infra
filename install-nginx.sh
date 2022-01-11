@@ -8,8 +8,15 @@ endColor=$'\e[0m'
 source ./config.sh
 
 function createAvailableSite() {
-  cat <<- EOF > $@
-  server {}
+cat <<- EOF > $@
+server {
+  server_name $@
+
+  location/ {
+    include proxy_params;
+    proxy_pass http://127.0.0.1:8732;
+  }
+}
 EOF
 }
 
