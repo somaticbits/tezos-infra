@@ -46,13 +46,16 @@ if [ -z ${RPC_URL} ]; then
   echo "RPC_URL is unset";
 else
   createAvailableSite ${RPC_URL} ${RPC_PORT}
+fi
 
 if [ -z ${MONITOR_URL} ]; then
   echo "MONITOR_URL is unset";
 else
   createAvailableSite ${MONITOR_URL} ${MONITOR_PORT}
+fi
 
 if [ -z ${TZKT_URL} ]; then
   echo "MONITOR_URL is unset";
 else
   createAvailableSite ${TZKT_URL} ${TZKT_PORT}
+fi
