@@ -1,0 +1,15 @@
+version: "3"
+services:
+  node:
+    environment:
+      - TEZOS_HISTORY_MODE
+    image: tezos/tezos:${TEZOS_VERSION}
+    entrypoint: "tezos-node"
+    command: "run --data-dir /var/run/tezos/node/data --history-mode full --force-history-mode-switch --rpc-addr 0.
+0.0.0:8732 --allow-all-rpc=0.0.0.0:8732 --cors-header='content-type' --cors-origin='*'"
+    hostname: node
+    ports:
+      - "8732:8732"
+      - "9732:9732/udp"
+    volumes:
+       - "/tezos/node:/var/run/tezos/node"
