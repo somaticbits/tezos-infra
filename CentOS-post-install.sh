@@ -6,7 +6,7 @@ blue=$'\e[34m'
 endColor=$'\e[0m'
 
 echo
-echo -e "${blue}Welcome to SOMATICBITS's Centos 7 post install script!${endColor}"
+echo -e "${yellow}Welcome to SOMATICBITS's Centos 7 post install script!${endColor}"
 echo
 echo -e "----------- Updating system..."
 echo
@@ -22,7 +22,7 @@ echo
 yum install epel-release -y
 
 echo
-echo -e "${green}Done!${endColor}"
+echo -e "${green}✓ Done!${endColor}"
 echo
 
 yum update
@@ -38,7 +38,7 @@ yum install python-pip -y
 pip install --upgrade pip
 
 echo
-echo -e "${green}Done!${endColor}"
+echo -e "${green}✓ Done!${endColor}"
 echo
 
 echo -e "----------- Adding Docker Community Edition repository and installing docker-ce with docker-compose..."
@@ -54,19 +54,19 @@ systemctl start docker
 systemctl enable docker
 
 echo
-echo -e "${green}Done!${endColor}"
+echo -e "${green}✓ Done!${endColor}"
 echo
 
 echo "----------- Installing NTP syncing..."
-yum install ntp ntpdate
+yum install ntp ntpdate -y
 systemctl start ntpd
 systemctl enable ntpd
-ntpdate -u -s 0.eu.pool.ntp.org 1.eu.pool.ntp.org 2.eu.pool.ntp.org 3.eu.pool.ntp.org
+ntpdate -u -s 0.de.pool.ntp.org 1.de.pool.ntp.org 2.de.pool.ntp.org 3.de.pool.ntp.org
 systemctl restart ntpd
 hwclock -w
 
 echo
-echo -e "${green}Done!${endColor}"
+echo -e "${green}✓ Done!${endColor}"
 echo
 
 mkdir .ssh
