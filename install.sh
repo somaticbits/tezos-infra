@@ -46,8 +46,6 @@ if [ ! -e ${TEZOS_PATH}/snapshots/mainnet.full ]; then
 else
   echo -e "${green}✓ Snapshot already pulled!${endColor}"
   echo
-  echo -e "${green}Remove ${TEZOS_PATH}/snapshots/mainnet.full if you wish to re-download the latest snapshot${endColor}"
-  echo
 fi
 
 echo -e "${yellow}--- Importing snapshot (will take a while... be patient)${endColor}"
