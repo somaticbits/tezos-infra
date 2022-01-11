@@ -12,7 +12,7 @@ function createAvailableSite() {
     cat <<- EOF > $@
     server {}
     EOF
-  fi
+  fi;
 }
 
 echo
