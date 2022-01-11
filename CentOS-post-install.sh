@@ -13,7 +13,6 @@ echo
 echo -e "${yellow}----------- Updating system${endColor}"
 echo
 
-yum install -y glibc-langpack-en
 yum update -yyy -q
 
 echo
