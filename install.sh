@@ -45,6 +45,7 @@ if [ ! -e ${TEZOS_PATH}/snapshots/mainnet.full ]; then
   echo
 else
   echo -e "${green}✓ Snapshot already pulled!${endColor}"
+  echo
   echo -e "${green}Remove ${TEZOS_PATH}/snapshots/mainnet.full if you wish to re-download the latest snapshot${endColor}"
   echo
 fi
@@ -54,7 +55,10 @@ echo
 
 # Extract block id from snapshot URL for import
 BLOCK_ID=$(echo "$SNAPSHOT_URL" | grep -o -P '(?<=[0-9]_)(.*?)(?=.full)')
-docker run --rm -v ${TEZOS_PATH}/node:/var/run/tezos/node -v ${TEZOS_PATH}/snapshots/mainnet.full:/snapshot tezos/tezos:${TEZOS_VERSION} tezos-snapshot-import --block=${BLOCK_ID}
+docker run --rm -v ${TEZOS_PATH}/node:/var/run/tezos/node \
+                -v ${TEZOS_PATH}/snapshots/mainnet.full:/snapshot \
+                tezos/tezos:${TEZOS_VERSION} \
+                tezos-snapshot-import --block=${BLOCK_ID}
 
 echo
 echo -e "${green}✓ Done!${endColor}"
