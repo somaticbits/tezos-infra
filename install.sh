@@ -62,3 +62,9 @@ echo
 
 echo -e "${yellow}--- Running Docker Tezos container${endColor}"
 echo
+
+docker-compose up -d
+
+echo
+echo -e "${green}✓ Node is running!${endColor}"
+echo
