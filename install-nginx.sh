@@ -8,13 +8,16 @@ endColor=$'\e[0m'
 source ./config.sh
 
 function createAvailableSite() {
-cat <<- EOF > $@
+cat <<- EOF > ${1}
 server {
-  server_name $@
+  listen 80;
+  listen [::]80;
+
+  server_name ${1}
 
   location/ {
     include proxy_params;
-    proxy_pass http://127.0.0.1:8732;
+    proxy_pass http://127.0.0.1:${2};
   }
 }
 EOF
@@ -39,4 +42,17 @@ echo
 
 #mv ./nginx.conf /etc/nginx/nginx.conf
 
-createAvailableSite ${RPC_URL}
+if [ -z ${RPC_URL} ]; then
+  echo "RPC_URL is unset";
+else
+  createAvailableSite ${RPC_URL} ${RPC_PORT}
+
+if [ -z ${MONITOR_URL} ]; then
+  echo "MONITOR_URL is unset";
+else
+  createAvailableSite ${MONITOR_URL} ${MONITOR_PORT}
+
+if [ -z ${TZKT_URL} ]; then
+  echo "MONITOR_URL is unset";
+else
+  createAvailableSite ${TZKT_URL} ${TZKT_PORT}
