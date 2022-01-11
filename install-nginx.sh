@@ -8,11 +8,9 @@ endColor=$'\e[0m'
 source ./config.sh
 
 function createAvailableSite() {
-  if true; then
-    cat <<- EOF > $@
-    server {}
-    EOF
-  fi;
+  cat <<- EOF > $@
+  server {}
+EOF
 }
 
 echo
