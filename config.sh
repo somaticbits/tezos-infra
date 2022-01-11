@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # RPC config
-TEZOS_VERSION="v12.0-rc1"
+TEZOS_VERSION="v12.0-rc1_7a8c3312_20211220191531"
 TEZOS_HISTORY_MODE="${TEZOS_HISTORY_MODE:-full}"
 TEZOS_PATH="/tezos"
 RPC_URL="testnode.somaticbits.xyz"
