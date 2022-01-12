@@ -93,3 +93,10 @@ echo -e "${yellow}--- Reloading firewall service${endColor}"
 echo
 
 systemctl reload firewalld
+
+echo
+echo -e "${yellow}--- Starting NGINX service${endColor}"
+echo
+
+systemctl restart nginx
+systemctl enable nginx
