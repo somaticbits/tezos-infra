@@ -70,7 +70,7 @@ else
   ln -s /etc/nginx/sites-available/${RPC_URL} /etc/nginx/sites-enabled/${RPC_URL}
 
   echo
-  echo -e "${yellow}--- Adding ports to SELinux${endColor}"
+  echo -e "${yellow}--- Adding ${RPC_PORT} port to SELinux${endColor}"
   echo
 
   semanage port --add --type http_port_t --proto tcp ${RPC_PORT}
@@ -91,7 +91,7 @@ else
   ln -s /etc/nginx/sites-available/${MONITOR_URL} /etc/nginx/sites-enabled/${MONITOR_URL}
 
   echo
-  echo -e "${yellow}--- Adding ports to SELinux${endColor}"
+  echo -e "${yellow}--- Adding ${MONITOR_PORT} port to SELinux${endColor}"
   echo
 
   semanage port -m -t http_port_t -p tcp ${MONITOR_PORT}
@@ -111,7 +111,7 @@ else
   ln -s /etc/nginx/sites-available/${TZKT_URL} /etc/nginx/sites-enabled/${TZKT_URL}
 
   echo
-  echo -e "${yellow}--- Adding ports to SELinux${endColor}"
+  echo -e "${yellow}--- Adding ${TZKT_PORT} port to SELinux${endColor}"
   echo
 
   semanage port -m -t http_port_t -p tcp ${TZKT_PORT}
