@@ -22,13 +22,21 @@ mv ./monitoring/config.monitoring ${TEZOS_PATH}/prometheus/grafana/config.monito
 mv ./monitoring/docker-stack.yml ${TEZOS_PATH}/prometheus/docker-stack.yml
 mv ./monitoring/prometheus.yml ${TEZOS_PATH}/prometheus/prometheus/prometheus.yml
 mv ./monitoring/datasource.yml ${TEZOS_PATH}/prometheus/grafana/provisioning/datasources/datasource.yml
-mv ./monitoring/tezos-dashboard.json ${TEZOS_PATH}/prometheus/dashboard/tezos-dashboard.yml
+mv ./monitoring/tezos-dashboard.json ${TEZOS_PATH}/prometheus/dashboards/tezos-dashboard.yml
+
+# restoring permissions
+restorecon ${TEZOS_PATH}/prometheus/grafana/config.monitoring
+restorecon ${TEZOS_PATH}/prometheus/docker-stack.yml
+restorecon ${TEZOS_PATH}/prometheus/prometheus/prometheus.yml
+restorecon ${TEZOS_PATH}/prometheus/grafana/provisioning/datasources/datasource.yml
+restorecon ${TEZOS_PATH}/prometheus/dashboards/tezos-dashboard.yml
 
 echo
 echo -e "${yellow}--- Deploying Monitoring stack${endColor}"
 echo
 
 cd ${TEZOS_PATH}/prometheus
+docker swarm init
 docker stack deploy -c ./docker-stack.yml prom
 
 if [ -z ${MONITOR_URL} ]; then
@@ -52,7 +60,7 @@ else
   echo -e "${yellow}--- Adding port ${MONITOR_PORT} to SELinux ${endColor}"
   echo
 
-  semanage port -m -t http_port_t -p tcp ${MONITOR_PORT}
+  semanage port -a -t http_port_t -p tcp ${MONITOR_PORT}
 
   echo
   echo -e "${yellow}--- Getting certificates with Certbot for ${MONITOR_URL}${endColor}"
