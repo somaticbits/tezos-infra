@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source ../config/colors.sh
-source ../config/config.sh
-source ./snapshot-config.sh
+source ./config/colors.sh
+source ./config/config.sh
+source ./node/snapshot-config.sh
 
 echo
 echo -e "${yellow}--- Pulling latest snapshot${endColor}"
