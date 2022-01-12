@@ -12,7 +12,7 @@ echo
 echo -e "${yellow}--- Installing NGINX${endColor}"
 echo
 
-yum install nginx -q
+yum install nginx -y -q
 
 echo
 echo -e "${green}✓ Done!${endColor}"
@@ -21,7 +21,7 @@ echo
 echo -e "${yellow}--- Installing Certbot${endColor}"
 echo
 
-yum install python-certbot-nginx
+yum install python-certbot-nginx -y -q
 
 echo
 echo -e "${green}✓ Done!${endColor}"
@@ -34,7 +34,6 @@ mv ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 echo
 echo -e "${yellow}--- Setting up URLs${endColor}"
-echo
 
 if [ -z ${RPC_URL} ]; then
   echo "${red}RPC_URL is unset, please set it before continuing!${endColor}";
@@ -46,12 +45,12 @@ else
   echo -e "${yellow}--- Testing config for ${RPC_URL}${endColor}"
   echo
 
-  nginx -t /tmp/${RPC_URL}
   mv /tmp/${RPC_URL} /etc/nginx/sites-available/${RPC_URL}
   ln -s /etc/nginx/sites-available/${RPC_URL} /etc/nginx/sites-enabled/${RPC_URL}
+  nginx -t
 
   echo
-  echo -e "${yellow}--- Adding ${RPC_PORT} port to SELinux${endColor}"
+  echo -e "${yellow}--- Adding port ${RPC_PORT} to SELinux${endColor}"
   echo
 
   semanage port --add --type http_port_t --proto tcp ${RPC_PORT}
@@ -73,12 +72,12 @@ else
   echo -e "${yellow}--- Testing config for ${TZKT_URL}${endColor}"
   echo
 
-  nginx -t /tmp/${TZKT_URL}
   mv /tmp/${TZKT_URL} /etc/nginx/sites-available/${TZKT_URL}
   ln -s /etc/nginx/sites-available/${TZKT_URL} /etc/nginx/sites-enabled/${TZKT_URL}
+  nginx -t
 
   echo
-  echo -e "${yellow}--- Adding ${TZKT_PORT} port to SELinux${endColor}"
+  echo -e "${yellow}--- Adding port ${TZKT_PORT} to SELinux${endColor}"
   echo
 
   semanage port -m -t http_port_t -p tcp ${TZKT_PORT}
@@ -92,7 +91,6 @@ fi
 
 echo
 echo -e "${yellow}--- Reloading firewall service${endColor}"
-echo
 
 systemctl reload firewalld
 

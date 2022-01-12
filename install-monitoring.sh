@@ -53,12 +53,12 @@ else
   echo -e "${yellow}--- Testing config for ${MONITOR_URL}${endColor}"
   echo
 
-  nginx -t /tmp/${MONITOR_URL}
   mv /tmp/${MONITOR_URL} /etc/nginx/sites-available/${MONITOR_URL}
   ln -s /etc/nginx/sites-available/${MONITOR_URL} /etc/nginx/sites-enabled/${MONITOR_URL}
+  nginx -t
 
   echo
-  echo -e "${yellow}--- Adding ${MONITOR_PORT} port to SELinux${endColor}"
+  echo -e "${yellow}--- Adding port ${MONITOR_PORT} to SELinux ${endColor}"
   echo
 
   semanage port -m -t http_port_t -p tcp ${MONITOR_PORT}
