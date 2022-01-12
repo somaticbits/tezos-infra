@@ -104,7 +104,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- GETTING STARTED -->
 ## Getting Started
 
-First and foremost step is to get either a VPS, or a dedicated server to host the Tezos Node, the TzKT blockchain indexer and the monitoring stack. Current preferred provider is [Servdiscount](www.servdiscount.com).
+First and foremost step is to get either a VPS, or a dedicated server to host the Tezos Node, the TzKT blockchain indexer and the monitoring stack. Current preferred provider is [Servdiscount](www.servdiscount.com). Recommended specifications: 8(v)Cores / 16GB RAM / 500GB+ (SSD is recommended)
 
 *Note: these steps are valid on a CentOS 7 distribution but can be reproduced with some changes on any other distro (Ubuntu, Debian...).*
 
@@ -137,12 +137,16 @@ usermod -aG wheel tezos
 1. Clone this repository  
 `git clone https://github.com/somaticbits/tezos-infra`
 2. Switch to the `tezos-infra` folder
-3. Install the RPC (node)  
+3. Add execution permission to scripts  
+`chmod +x install-*`
+4. Install the RPC (node)  
 `./install-node.sh`
-4. Install TzKT  
+5. Install TzKT  
 `./install-tzkt.sh`
-5. Install monitoring stack  
+6. (optional) Install monitoring stack  
 `./install-monitoring.sh`
+7. Install NGINX  
+`./install-nginx.sh`
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
