@@ -34,6 +34,7 @@ docker stack deploy -c ./docker-stack.yml prom
 if [ -z ${MONITOR_URL} ]; then
   echo "${red}MONITOR_URL is unset${endColor}";
 else
+  echo
   echo -e "${yellow}--- Setting NGINX for stack${endColor}"
   echo
 

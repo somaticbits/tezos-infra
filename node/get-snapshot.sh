@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ./config/colors.sh
-source ./config/config.sh
+source ../config/colors.sh
+source ../config/config.sh
 source ./snapshot-config.sh
 
 echo

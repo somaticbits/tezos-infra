@@ -28,6 +28,7 @@ mv ./nginx/proxy_params /etc/nginx/proxy_params
 
 echo
 echo -e "${yellow}--- Setting up URLs${endColor}"
+echo
 
 if [ -z ${RPC_URL} ]; then
   echo "${red}RPC_URL is unset, please set it before continuing!${endColor}";
