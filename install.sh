@@ -31,9 +31,8 @@ echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
-./get-snapshot.sh
-./install-snapshot.sh
-
+./node/get-snapshot.sh
+./node/install-snapshot.sh
 
 echo -e "${yellow}--- Running Docker Tezos container${endColor}"
 echo
