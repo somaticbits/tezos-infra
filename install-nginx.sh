@@ -31,6 +31,7 @@ mkdir /etc/nginx/sites-available
 mkdir /etc/nginx/sites-enabled
 
 mv ./nginx/nginx.conf /etc/nginx/nginx.conf
+mv ./nginx/proxy_params /etc/nginx/proxy_params
 
 echo
 echo -e "${yellow}--- Setting up URLs${endColor}"
