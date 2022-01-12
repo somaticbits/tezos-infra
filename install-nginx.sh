@@ -28,7 +28,7 @@ mv ./nginx/proxy_params /etc/nginx/proxy_params
 
 # restore permissions
 restorecon /etc/nginx/nginx.conf
-restorecon /etc/nginx/proxy_param
+restorecon /etc/nginx/proxy_params
 
 echo
 echo -e "${yellow}--- Setting up URLs${endColor}"
@@ -97,10 +97,6 @@ systemctl reload firewalld
 echo
 echo -e "${yellow}--- Starting NGINX service${endColor}"
 echo
-
-# restore permissions
-restorecon /etc/nginx/nginx.conf
-restorecon /etc/nginx/proxy_param
 
 pkill -f nginx & wait $!
 systemctl start nginx
