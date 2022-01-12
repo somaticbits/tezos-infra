@@ -67,4 +67,10 @@ else
   echo
 
   certbot --nginx --non-interactive --agree-tos -d ${MONITOR_URL} -m ${CERTBOT_EMAIL}
+
+  echo
+  echo -e "${yellow}--- Reloading NGINX${endColor}"
+  echo
+
+  systemctl reload nginx
 fi
