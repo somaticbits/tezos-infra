@@ -22,23 +22,13 @@ make stop
 make clean
 
 echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 echo -e "${yellow}--- Initialising TzKT${endColor}"
 echo
 
 make init
 
 echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 echo -e "${yellow}--- Starting TzKT${endColor}"
 echo
 
 make start
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo

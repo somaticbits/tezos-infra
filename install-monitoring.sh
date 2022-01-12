@@ -15,9 +15,6 @@ echo
 git clone https://github.com/vegasbrianc/prometheus ${TEZOS_PATH}/prometheus
 
 echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 echo -e "${yellow}--- Customising stack${endColor}"
 echo
 
@@ -28,18 +25,11 @@ mv ./monitoring/datasource.yml ${TEZOS_PATH}/prometheus/grafana/provisioning/dat
 mv ./monitoring/tezos-dashboard.json ${TEZOS_PATH}/prometheus/dashboard/tezos-dashboard.yml
 
 echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 echo -e "${yellow}--- Deploying Monitoring stack${endColor}"
 echo
 
 cd ${TEZOS_PATH}/prometheus
 docker stack deploy -c ./docker-stack.yml prom
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo
 
 if [ -z ${MONITOR_URL} ]; then
   echo "${red}MONITOR_URL is unset${endColor}";
@@ -69,7 +59,3 @@ else
 
   certbot --nginx --non-interactive --agree-tos -d ${MONITOR_URL} -m ${CERTBOT_EMAIL}
 fi
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo

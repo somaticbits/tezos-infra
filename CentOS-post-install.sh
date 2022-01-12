@@ -12,19 +12,14 @@ echo
 
 yum update -yyy -q
 
-echo -e "${green}✓ System is updated.${endColor}"
 echo
 echo "${yellow}--- Adding Epel repo${endColor}"
-
+echo
 
 yum install epel-release -yyy -q
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 yum update -yyy -q
 
+echo
 echo -e "${yellow}--- Installing Development tools and few other things${endColor}"
 echo
 
@@ -34,9 +29,6 @@ yum install yum-utils device-mapper-persistent-data lvm2 -y -q
 yum install python-pip -y -q
 
 echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 echo -e "${yellow}--- Adding Docker Community Edition repository and installing docker-ce with docker-compose${endColor}"
 echo
 PLATFORM=$(uname -s)
@@ -51,9 +43,6 @@ systemctl start docker
 systemctl enable docker
 
 echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 echo "${yellow}--- Installing NTP syncing${endColor}"
 echo
 yum install ntp ntpdate -y -q
@@ -62,10 +51,6 @@ systemctl enable ntpd
 ntpdate -u -s 0.de.pool.ntp.org 1.de.pool.ntp.org 2.de.pool.ntp.org 3.de.pool.ntp.org
 systemctl restart ntpd
 hwclock -w
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo
 
 mkdir .ssh
 touch .ssh/authorized_keys

@@ -15,17 +15,10 @@ echo
 yum install nginx -y -q
 
 echo
-echo -e "${green}✓ Done!${endColor}"
-echo
-
 echo -e "${yellow}--- Installing Certbot${endColor}"
 echo
 
 yum install python-certbot-nginx -y -q
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo
 
 mkdir /etc/nginx/sites-available
 mkdir /etc/nginx/sites-enabled
@@ -92,18 +85,13 @@ fi
 
 echo
 echo -e "${yellow}--- Reloading firewall service${endColor}"
+echo
 
 systemctl reload firewalld
 
 echo
-echo -e "${green}✓ Done!${endColor}"
+echo -e "${yellow}--- Starting NGINX service${endColor}"
 echo
 
-echo -e "${yellow}--- Reloading NGINX service${endColor}"
-echo
-
-systemctl reload nginx
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo
+systemctl start nginx
+systemctl enable nginx
