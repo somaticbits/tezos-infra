@@ -156,7 +156,10 @@ usermod -aG wheel tezos
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Node: once installed, you need to exchange the RPC Url in your wallet of choice. In Temple, open the settings and under `Network`, you can set your freshly installed node. Forget about overcrowded public nodes.
+TzKT: this part of the infrastructure allows you to use the TzKT api under your own address of choice. For more documentation, please relate to the official documentation: [TzKT API Docs](https://api.tzkt.io/)
+Monitoring stack: This part can be accessed via the url you set in the `config.sh` file (an example would be: https://monitor.somaticbits.xyz).  
+Password is set in the `config.monitoring` file. Current default password: `TezosIsTheBest`. Login: `admin`
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
