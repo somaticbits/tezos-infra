@@ -98,6 +98,5 @@ echo
 echo -e "${yellow}--- Starting NGINX service${endColor}"
 echo
 
-pkill -f nginx & wait $!
 systemctl start nginx
 systemctl enable nginx
