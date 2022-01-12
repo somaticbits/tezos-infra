@@ -38,11 +38,7 @@
   <p align="center">
     This repository outlines the necessary steps to setup a Tezos Node, a TzKT blockchain indexer aswell as the necessary monitoring framework with Grafana and Prometheus.
     <br />
-    <a href="https://github.com/somaticbits/tezos-infra"><strong>Explore the docs »</strong></a>
     <br />
-    <br />
-    <a href="https://github.com/somaticbits/tezos-infra">View Demo</a>
-    ·
     <a href="https://github.com/somaticbits/tezos-infra/issues">Report Bug</a>
     ·
     <a href="https://github.com/somaticbits/tezos-infra/issues">Request Feature</a>
@@ -82,9 +78,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+The infrastructure is part of a bigger project of generative art called serialCore.
+The scripts in this repository are regrouping the knowledge that has been acquired through experimentation and learning. It allows to setup a whole Tezos blockchain stack comprised of a non-baking node (RPC), with a blockchain indexer called TzKT and a monitoring stack to keep watch over the Docker instances.
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `somaticbits`, `tezos-infra`, `somaticbits`, `linkedin_username`, `david`, `somaticbits`, `project_title`, `project_description`
+The goal of having one's own Tezos stack is to be able to interact more freely with the blockchain, without having the limitations of the publicly accessible services. When a high load is requested, it's not rare of having slow downs or freezes on the public instances.
+
+All credits have been added where they were due.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -92,6 +92,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
+* [Tezos](https://tezos.com/)
 * [CentOS](https://www.centos.org/)
 * [Docker](https://www.docker.com/)
 * [PostgreSQL](https://www.postgresql.org/)
@@ -156,55 +157,14 @@ usermod -aG wheel tezos
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Node: once installed, you need to exchange the RPC Url in your wallet of choice. In Temple, open the settings and under `Network`, you can set your freshly installed node. Forget about overcrowded public nodes.
-TzKT: this part of the infrastructure allows you to use the TzKT api under your own address of choice. For more documentation, please relate to the official documentation: [TzKT API Docs](https://api.tzkt.io/)
-Monitoring stack: This part can be accessed via the url you set in the `config.sh` file (an example would be: https://monitor.somaticbits.xyz).  
+* Node: once installed, you need to exchange the RPC Url in your wallet of choice. In [Temple](https://templewallet.com/), open the settings and under `Network`, you can set your freshly installed node. Forget about overcrowded public nodes.  
+* TzKT: this part of the infrastructure allows you to use the TzKT api under your own address of choice. For more documentation, please relate to the official documentation: [TzKT API Docs](https://api.tzkt.io/)
+* Monitoring stack: This part can be accessed via the url you set in the `config.sh` file (an example would be: https://monitor.somaticbits.xyz).  
 Password is set in the `config.monitoring` file. Current default password: `TezosIsTheBest`. Login: `admin`
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
-
-See the [open issues](https://github.com/somaticbits/tezos-infra/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -220,9 +180,8 @@ Project Link: [https://github.com/somaticbits/tezos-infra](https://github.com/so
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* [br0kenlink](https://github.com/br0kenlink/c7-post) for the post-install script
+* [BakingBad](https://github.com/baking-bad/tzkt) for their blockchain indexer
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
