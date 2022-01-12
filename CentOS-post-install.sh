@@ -18,15 +18,15 @@ yum update -yyy -q
 echo -e "${green}✓ System is updated.${endColor}"
 echo
 echo "${yellow}--- Adding Epel repo${endColor}"
-echo
 
-yum install epel-release -y -q
+
+yum install epel-release -yyy -q
 
 echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
-yum update -q
+yum update -yyy -q
 
 echo -e "${yellow}--- Installing Development tools and few other things${endColor}"
 echo
