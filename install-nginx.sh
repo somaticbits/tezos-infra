@@ -98,6 +98,10 @@ echo
 echo -e "${yellow}--- Starting NGINX service${endColor}"
 echo
 
+# restore permissions
+restorecon /etc/nginx/nginx.conf
+restorecon /etc/nginx/proxy_param
+
 pkill -f nginx & wait $!
 systemctl start nginx
 systemctl enable nginx
