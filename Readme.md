@@ -116,10 +116,10 @@ usermod -aG wheel tezos
 `./install-node.sh`
 5. Install TzKT  
 `./install-tzkt.sh`
-6. (optional) Install monitoring stack  
-`./install-monitoring.sh`
-7. Install NGINX  
+6. Install NGINX  
 `./install-nginx.sh`
+7. (optional) Install monitoring stack  
+`./install-monitoring.sh`
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
