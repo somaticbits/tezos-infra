@@ -14,6 +14,9 @@ echo
 
 yum install nginx -y -q
 
+systemctl start nginx
+systemctl enable nginx
+
 echo
 echo -e "${yellow}--- Installing Certbot${endColor}"
 echo
@@ -87,3 +90,9 @@ else
 
   certbot --nginx --non-interactive --agree-tos -d ${TZKT_URL} -m ${CERTBOT_EMAIL}
 fi
+
+echo
+echo -e "${yellow}--- Reloading NGINX${endColor}"
+echo
+
+systemctl reload nginx
