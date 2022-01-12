@@ -1,6 +1,10 @@
 #!/bin/bash
 
-source ./config/colors.sh
+red=$'\e[31m'
+green=$'\e[32m'
+yellow=$'\e[33m'
+blue=$'\e[34m'
+endColor=$'\e[0m'
 
 echo
 echo -e "${yellow}**********************************************************${endColor}"
@@ -20,7 +24,7 @@ yum install epel-release -yyy -q
 yum update -yyy -q
 
 echo
-echo -e "${yellow}--- Installing Development tools and few other things${endColor}"
+echo -e "${yellow}--- Installing nano, git, pip, Development tools${endColor}"
 echo
 
 yum install nano git -y -q
@@ -29,8 +33,9 @@ yum install yum-utils device-mapper-persistent-data lvm2 -y -q
 yum install python-pip -y -q
 
 echo
-echo -e "${yellow}--- Adding Docker Community Edition repository and installing docker-ce with docker-compose${endColor}"
+echo -e "${yellow}--- Adding Docker Community Edition repo and installing docker-ce with docker-compose${endColor}"
 echo
+
 PLATFORM=$(uname -s)
 curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-${PLATFORM,}-$(uname -m)" -o /usr/local/bin/docker-compose
 cp /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -45,6 +50,7 @@ systemctl enable docker
 echo
 echo "${yellow}--- Installing NTP syncing${endColor}"
 echo
+
 yum install ntp ntpdate -y -q
 systemctl start ntpd
 systemctl enable ntpd
