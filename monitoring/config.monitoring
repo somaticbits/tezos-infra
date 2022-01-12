@@ -1,0 +1,5 @@
+GF_SECURITY_ADMIN_PASSWORD=TezosIsTheBest
+GF_USERS_ALLOW_SIGN_UP=false
+GF_INSTALL_PLUGINS=https://github.com/ecadlabs/tezos-grafana-datasource/releases/download/v0.0.2/ecad-labs-tezos-da
+tasource-0.0.2.zip;ecad-labs-tezos-datasource
+GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=ecad-labs-tezos-datasource

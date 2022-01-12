@@ -2,22 +2,7 @@
 
 source ./config/colors.sh
 source ./config/config.sh
-
-function createAvailableSite() {
-cat <<- EOF > /tmp/${1}
-server {
-  listen 80;
-  listen [::]80;
-
-  server_name ${1};
-
-  location/ {
-    include proxy_params;
-    proxy_pass http://127.0.0.1:${2};
-  }
-}
-EOF
-}
+source ./nginx/utils.sh
 
 echo
 echo -e "${yellow}**************************************************************${endColor}"
@@ -77,33 +62,6 @@ else
   echo
 
   certbot --nginx --non-interactive --agree-tos -d ${RPC_URL} -m ${CERTBOT_EMAIL}
-
-fi
-
-if [ -z ${MONITOR_URL} ]; then
-  echo "${red}MONITOR_URL is unset${endColor}";
-else
-  createAvailableSite ${MONITOR_URL} ${MONITOR_PORT}
-
-  echo
-  echo -e "${yellow}--- Testing config for ${MONITOR_URL}${endColor}"
-  echo
-
-  nginx -t /tmp/${MONITOR_URL}
-  mv /tmp/${MONITOR_URL} /etc/nginx/sites-available/${MONITOR_URL}
-  ln -s /etc/nginx/sites-available/${MONITOR_URL} /etc/nginx/sites-enabled/${MONITOR_URL}
-
-  echo
-  echo -e "${yellow}--- Adding ${MONITOR_PORT} port to SELinux${endColor}"
-  echo
-
-  semanage port -m -t http_port_t -p tcp ${MONITOR_PORT}
-
-  echo
-  echo -e "${yellow}--- Getting certificates with Certbot for ${MONITOR_URL}${endColor}"
-  echo
-
-  certbot --nginx --non-interactive --agree-tos -d ${MONITOR_URL} -m ${CERTBOT_EMAIL}
 fi
 
 if [ -z ${TZKT_URL} ]; then

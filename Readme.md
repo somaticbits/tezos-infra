@@ -95,6 +95,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [CentOS](https://www.centos.org/)
 * [Docker](https://www.docker.com/)
 * [PostgreSQL](https://www.postgresql.org/)
+* [NGINX](https://www.nginx.com/)
+* [Grafana](https://grafana.com/)
+* [Prometheus](https://prometheus.io/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -131,9 +134,15 @@ usermod -aG wheel tezos
 
 ### Installation
 
-1. Pull the latest release candidate Tezos docker image
-`sudo docker pull tezos/tezos:v12.0-rc1`
-2.
+1. Clone this repository  
+`git clone https://github.com/somaticbits/tezos-infra`
+2. Switch to the `tezos-infra` folder
+3. Install the RPC (node)  
+`./install-node.sh`
+4. Install TzKT  
+`./install-tzkt.sh`
+5. Install monitoring stack  
+`./install-monitoring.sh`
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
