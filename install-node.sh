@@ -1,11 +1,7 @@
 #!/bin/bash
-red=$'\e[31m'
-green=$'\e[32m'
-yellow=$'\e[33m'
-blue=$'\e[34m'
-endColor=$'\e[0m'
 
-source ./config.sh
+source ./config/colors.sh
+source ./config/config.sh
 
 echo
 echo -e "${yellow}************************************************************${endColor}"
@@ -31,6 +27,7 @@ echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
+chmod +x ./node/*
 ./node/get-snapshot.sh
 ./node/install-snapshot.sh
 

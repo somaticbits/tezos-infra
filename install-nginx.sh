@@ -1,11 +1,7 @@
 #!/bin/bash
-red=$'\e[31m'
-green=$'\e[32m'
-yellow=$'\e[33m'
-blue=$'\e[34m'
-endColor=$'\e[0m'
 
-source ./config.sh
+source ./config/colors.sh
+source ./config/config.sh
 
 function createAvailableSite() {
 cat <<- EOF > /tmp/${1}
@@ -24,14 +20,14 @@ EOF
 }
 
 echo
-echo -e "${yellow}**********************************************************${endColor}"
-echo -e "${yellow}* Welcome to SOMATICBITS's NGINX and SSL install script! *${endColor}"
-echo -e "${yellow}**********************************************************${endColor}"
+echo -e "${yellow}**************************************************************${endColor}"
+echo -e "${yellow}* Welcome to SOMATICBITS's NGINX and Certbot install script! *${endColor}"
+echo -e "${yellow}**************************************************************${endColor}"
 echo
 echo -e "${yellow}--- Installing NGINX${endColor}"
 echo
 
-#yum install nginx -q
+yum install nginx -q
 
 echo
 echo -e "${green}✓ Done!${endColor}"
@@ -40,16 +36,16 @@ echo
 echo -e "${yellow}--- Installing Certbot${endColor}"
 echo
 
-#yum install python-certbot-nginx
+yum install python-certbot-nginx
 
 echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
-#mkdir /etc/nginx/sites-available
-#mkdir /etc/nginx/sites-enabled
+mkdir /etc/nginx/sites-available
+mkdir /etc/nginx/sites-enabled
 
-#mv ./nginx.conf /etc/nginx/nginx.conf
+mv ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 echo
 echo -e "${yellow}--- Setting up URLs${endColor}"
@@ -75,6 +71,13 @@ else
 
   semanage port --add --type http_port_t --proto tcp ${RPC_PORT}
   semanage port --add --type http_port_t --proto udp 9732
+
+  echo
+  echo -e "${yellow}--- Getting certificates with Certbot for ${RPC_URL}${endColor}"
+  echo
+
+  certbot --nginx --non-interactive --agree-tos -d ${RPC_URL} -m ${CERTBOT_EMAIL}
+
 fi
 
 if [ -z ${MONITOR_URL} ]; then
@@ -95,6 +98,12 @@ else
   echo
 
   semanage port -m -t http_port_t -p tcp ${MONITOR_PORT}
+
+  echo
+  echo -e "${yellow}--- Getting certificates with Certbot for ${MONITOR_URL}${endColor}"
+  echo
+
+  certbot --nginx --non-interactive --agree-tos -d ${MONITOR_URL} -m ${CERTBOT_EMAIL}
 fi
 
 if [ -z ${TZKT_URL} ]; then
@@ -115,6 +124,12 @@ else
   echo
 
   semanage port -m -t http_port_t -p tcp ${TZKT_PORT}
+
+  echo
+  echo -e "${yellow}--- Getting certificates with Certbot for ${TZKT_URL}${endColor}"
+  echo
+
+  certbot --nginx --non-interactive --agree-tos -d ${TZKT_URL} -m ${CERTBOT_EMAIL}
 fi
 
 echo

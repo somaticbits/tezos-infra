@@ -14,3 +14,6 @@ MONITOR_PORT=3000 # default port
 # TzKT config
 TZKT_URL="testtzkt.somaticbits.xyz"
 TZKT_PORT=5000 # default port
+
+# Certbot config
+CERTBOT_EMAIL="pestpockenkrew@hotmail.com"
