@@ -141,7 +141,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@somaticbits](https://twitter.com/somaticbits) - david@somaticbits.com
+David Pettersson - [@somaticbits](https://twitter.com/somaticbits) - david@somaticbits.com
 
 Project Link: [https://github.com/somaticbits/tezos-infra](https://github.com/somaticbits/tezos-infra)
 
