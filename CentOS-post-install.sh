@@ -41,6 +41,7 @@ echo -e "${green}✓ Done!${endColor}"
 echo
 
 echo -e "${yellow}--- Adding Docker Community Edition repository and installing docker-ce with docker-compose${endColor}"
+echo
 PLATFORM=$(uname -s)
 curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-${PLATFORM,}-$(uname -m)" -o /usr/local/bin/docker-compose
 cp /usr/local/bin/docker-compose /usr/bin/docker-compose
