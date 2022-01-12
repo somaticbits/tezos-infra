@@ -26,6 +26,10 @@ mkdir /etc/nginx/sites-enabled
 mv ./nginx/nginx.conf /etc/nginx/nginx.conf
 mv ./nginx/proxy_params /etc/nginx/proxy_params
 
+# restore permissions
+restorecon /etc/nginx/nginx.conf
+restorecon /etc/nginx/proxy_param
+
 echo
 echo -e "${yellow}--- Setting up URLs${endColor}"
 echo
@@ -94,5 +98,6 @@ echo
 echo -e "${yellow}--- Starting NGINX service${endColor}"
 echo
 
+pkill -f nginx & wait $!
 systemctl start nginx
 systemctl enable nginx
