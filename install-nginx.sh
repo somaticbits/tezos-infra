@@ -60,6 +60,7 @@ else
   echo
 
   certbot --nginx --non-interactive --agree-tos -d ${RPC_URL} -m ${CERTBOT_EMAIL}
+  pkill -f nginx & wait $!
 fi
 
 if [ -z ${TZKT_URL} ]; then
@@ -86,6 +87,7 @@ else
   echo
 
   certbot --nginx --non-interactive --agree-tos -d ${TZKT_URL} -m ${CERTBOT_EMAIL}
+  pkill -f nginx & wait $!
 fi
 
 echo
