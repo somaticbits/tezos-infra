@@ -31,36 +31,9 @@ echo
 echo -e "${green}✓ Done!${endColor}"
 echo
 
-echo -e "${yellow}--- Pulling latest snapshot${endColor}"
-echo
+./get-snapshot.sh
+./install-snapshot.sh
 
-SNAPSHOT_URL=$(curl -sS https://snapshots-tezos.giganode.io | grep -o -E '"(https.*mainnet.*full)"' | tr -d '"' | head -1)
-
-if [ ! -e ${TEZOS_PATH}/snapshots/mainnet.full ]; then
-  mkdir -p ${TEZOS_PATH}/snapshots
-  # Download latest snapshot from giganode.io
-  curl -L ${SNAPSHOT_URL} -o ${TEZOS_PATH}/snapshots/mainnet.full
-  echo
-  echo -e "${green}✓ Done!${endColor}"
-  echo
-else
-  echo -e "${green}✓ Snapshot already pulled!${endColor}"
-  echo
-fi
-
-echo -e "${yellow}--- Importing snapshot (will take a while... be patient)${endColor}"
-echo
-
-# Extract block id from snapshot URL for import
-BLOCK_ID=$(echo "$SNAPSHOT_URL" | grep -o -P '(?<=[0-9]_)(.*?)(?=.full)')
-docker run --rm -v ${TEZOS_PATH}/node:/var/run/tezos/node \
-                -v ${TEZOS_PATH}/snapshots/mainnet.full:/snapshot \
-                tezos/tezos:${TEZOS_VERSION} \
-                tezos-snapshot-import --block=${BLOCK_ID}
-
-echo
-echo -e "${green}✓ Done!${endColor}"
-echo
 
 echo -e "${yellow}--- Running Docker Tezos container${endColor}"
 echo
