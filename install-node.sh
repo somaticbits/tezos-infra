@@ -29,4 +29,4 @@ echo
 echo -e "${yellow}--- Running Docker Tezos container${endColor}"
 echo
 
-TEZOS_VERSION="${TEZOS_VERSION}" TEZOS_HISTORY_MODE="${TEZOS_HISTORY_MODE}" docker-compose up -d
+TEZOS_VERSION="${TEZOS_VERSION}" docker-compose up -d
