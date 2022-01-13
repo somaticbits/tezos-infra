@@ -130,14 +130,12 @@ usermod -aG wheel tezos
 ## Usage
 
 * Node: once installed, you need to exchange the RPC Url in your wallet of choice. In [Temple](https://templewallet.com/), open the settings and under `Network`, you can set your freshly installed node. Forget about overcrowded public nodes.  
-If the container crashes, fire it back up with `sudo docker-compose up -d` in the repo folder. It relies on the `docker-compose.yml` to restart the container, and will at this point restart automatically if it crashes again.
+If the container crashes, fire it back up with `TEZOS_VERSION=TEZOS_VERSION sudo docker-compose up -d` in the repo folder. `TEZOS_VERSION` in this case is the one defined in the `config.sh` file (example v12.0-rc1). It relies on the `docker-compose.yml` to restart the container, and will at this point restart automatically if it crashes again.
 
 * TzKT: this part of the infrastructure allows you to use the TzKT api under your own address of choice. For more documentation, please relate to the official documentation: [TzKT API Docs](https://api.tzkt.io/)
 * Monitoring stack: This part can be accessed via the `MONITOR_URL` variable you set in the `config.sh` file (an example would be: https://monitor.somaticbits.xyz).  
 Password is set in the `config.monitoring` file which can be found in the `monitoring` folder. Current default password: `TezosIsTheBest`. Login: `admin`  
 The RPC node is monitored via the `Tezos` dashboard, generic container metrics can be found under `Docker Prometheus Monitoring` dashboard. An additional datasource has been added and can be used to access directly the PostgreSQL Database from TzKT.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
