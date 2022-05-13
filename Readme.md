@@ -86,12 +86,12 @@ First and foremost step is to get either a VPS, or a dedicated server to host th
 A general knowledge of *nix system is a prerequisite.
 
 This script will add a few necessary things to your CentOS installation (Development tools, Docker Community Edition and Docker Compose, NTP Syncing)
-* [post-install script for CentOS 7](https://raw.githubusercontent.com/somaticbits/tezos-infra/main/CentOS-post-install.sh?token=GHSAT0AAAAAABPOZLUUUOORYZ7ARTMNKT5OYO5PY6A)
+* [post-install script for CentOS 7](https://raw.githubusercontent.com/somaticbits/tezos-infra/main/CentOS-post-install.sh?token=GHSAT0AAAAAABUJMUQH77COOYNXH5XPFHWIYT6EJ4A)
 
 Downloading and running the script (run as root/sudo):  
 ```sh
 cd ~
-curl -L https://raw.githubusercontent.com/somaticbits/tezos-infra/main/CentOS-post-install.sh?token=GHSAT0AAAAAABPOZLUUUOORYZ7ARTMNKT5OYO5PY6A -o post-install.sh
+curl -L https://raw.githubusercontent.com/somaticbits/tezos-infra/main/CentOS-post-install.sh?token=GHSAT0AAAAAABUJMUQH77COOYNXH5XPFHWIYT6EJ4A -o post-install.sh
 chmod +x post-install.sh
 ./post-install.sh
 ```
